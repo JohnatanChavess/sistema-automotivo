@@ -1,4 +1,4 @@
--- 1. Criação das Tabelas
+
 CREATE TABLE IF NOT EXISTS marca (
     id            BIGINT       NOT NULL AUTO_INCREMENT,
     nome          VARCHAR(100) NOT NULL,
@@ -39,12 +39,10 @@ CREATE TABLE IF NOT EXISTS veiculo (
     CHECK (quilometragem >= 0)
 );
 
--- 2. Índices para performance (Requisito RNF01)
 CREATE INDEX idx_veiculo_status  ON veiculo (status);
 CREATE INDEX idx_veiculo_ano     ON veiculo (ano_fabricacao);
 CREATE INDEX idx_veiculo_preco   ON veiculo (preco);
 
--- 3. Carga Inicial de Dados
 INSERT INTO marca (nome, pais_origem) VALUES
     ('Toyota', 'Japão'), ('Ford', 'EUA'), ('Honda', 'Japão');
 

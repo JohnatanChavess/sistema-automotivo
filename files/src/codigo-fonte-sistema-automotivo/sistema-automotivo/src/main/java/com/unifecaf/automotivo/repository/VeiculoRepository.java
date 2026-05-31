@@ -11,17 +11,10 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Repositório JPA para a entidade Veiculo.
- *
- * Estende JpaSpecificationExecutor para suportar filtros dinâmicos
- * combinados (ex: por marca + preço + status ao mesmo tempo).
- */
+
 @Repository
 public interface VeiculoRepository
         extends JpaRepository<Veiculo, Long>, JpaSpecificationExecutor<Veiculo> {
-
-    // ── Filtros simples derivados do nome do método ──────────────────
 
     List<Veiculo> findByStatus(StatusVeiculo status);
 
@@ -31,19 +24,9 @@ public interface VeiculoRepository
 
     List<Veiculo> findByModeloMarcaId(Long marcaId);
 
-    // ── Filtro por faixa de preço (RF06) ─────────────────────────────
 
     List<Veiculo> findByPrecoBetween(BigDecimal precoMin, BigDecimal precoMax);
 
-    // ── Query JPQL customizada — filtro combinado (RF05-RF08) ─────────
-
-    /**
-     * Busca veículos com múltiplos filtros opcionais simultâneos.
-     * Parâmetros nulos são ignorados na cláusula WHERE.
-     *
-     * Exemplo de chamada:
-     *   findWithFilters("Toyota", null, 2022, null, 50000.0, 150000.0)
-     */
     @Query("""
         SELECT v FROM Veiculo v
         JOIN v.modelo m
@@ -65,7 +48,6 @@ public interface VeiculoRepository
             @Param("precoMax")   BigDecimal precoMax
     );
 
-    // ── Contagem para relatório ───────────────────────────────────────
 
     long countByStatus(StatusVeiculo status);
 }

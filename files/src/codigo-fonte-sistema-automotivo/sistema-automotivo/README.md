@@ -1,17 +1,17 @@
-# 🚗 Sistema Automotivo — Gestão de Estoque de Veículos
+# Sistema Automotivo — Gestão de Estoque de Veículos
 
 **UniFECAF | Análise e Desenvolvimento de Sistemas | Programação Orientada a Objetos**
 
----
 
-## 📋 Sobre o Projeto
+
+Sobre o Projeto
 
 Sistema CRUD completo para gerenciamento de estoque de veículos em concessionárias,
 desenvolvido com Java, Spring Boot e MySQL, aplicando os princípios da POO.
 
----
 
-## 🏗️ Estrutura de Pastas
+
+##Estrutura de Pastas
 
 ```
 sistema-automotivo/
@@ -47,7 +47,7 @@ sistema-automotivo/
 
 ---
 
-## ⚙️ Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Java 17+
@@ -78,7 +78,7 @@ mvn spring-boot:run
 
 ---
 
-## 🔌 Endpoints Principais
+## Endpoints Principais
 
 ### Veículos
 | Método | Endpoint | Descrição |
@@ -107,7 +107,7 @@ GET /api/veiculos/filtrar?marca=Toyota&status=DISPONIVEL&precoMax=150000
 
 ---
 
-## 🏛️ Arquitetura
+## Arquitetura
 
 ```
 Cliente (Postman / Swagger)
@@ -127,7 +127,7 @@ Cliente (Postman / Swagger)
 
 ---
 
-## 🎯 Conceitos de POO Aplicados
+## Conceitos de POO Aplicados
 
 | Conceito | Onde foi aplicado |
 |----------|-------------------|
@@ -139,7 +139,7 @@ Cliente (Postman / Swagger)
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - **Java 17** (LTS)
 - **Spring Boot 3.2** (Web, Data JPA, Validation)

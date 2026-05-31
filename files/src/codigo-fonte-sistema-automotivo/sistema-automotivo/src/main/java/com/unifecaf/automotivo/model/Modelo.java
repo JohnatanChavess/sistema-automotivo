@@ -11,13 +11,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Entidade JPA que representa o MODELO do veículo (ex: Corolla, Civic).
- *
- * POO aplicado:
- *  - Pertence a uma Marca (N:1) — relacionamento de composição
- *  - Possui vários Veiculos (1:N)
- */
+
 @Entity
 @Table(name = "modelo")
 @Getter
@@ -37,12 +31,8 @@ public class Modelo {
     private String nome;
 
     @Size(max = 50)
-    private String categoria; // Ex: SUV, Sedan, Hatch, Pickup
+    private String categoria; 
 
-    /**
-     * Relacionamento N:1 com Marca.
-     * @JsonBackReference evita loop na serialização JSON.
-     */
     @NotNull(message = "A marca é obrigatória para o modelo.")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "marca_id", nullable = false)

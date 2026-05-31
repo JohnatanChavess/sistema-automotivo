@@ -9,13 +9,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Entidade JPA que representa a MARCA do fabricante de veículos.
- *
- * POO aplicado:
- *  - Encapsulamento: atributos private, acesso via Lombok (@Getter/@Setter)
- *  - Associação 1:N com Modelo (uma Marca tem vários Modelos)
- */
+
 @Entity
 @Table(name = "marca")
 @Getter
@@ -37,11 +31,6 @@ public class Marca {
     @Size(max = 50)
     @Column(name = "pais_origem")
     private String paisOrigem;
-
-    /**
-     * Relacionamento 1:N com Modelo.
-     * @JsonManagedReference evita recursão infinita na serialização JSON.
-     */
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     @Builder.Default

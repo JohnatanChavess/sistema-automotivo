@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * Exceção lançada quando um recurso não é encontrado no banco de dados.
- * @ResponseStatus mapeia automaticamente para HTTP 404.
+ *
+ * @ResponseStatus 
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class RecursoNaoEncontradoException extends RuntimeException {

@@ -10,22 +10,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Camada de Serviço para operações de MODELO.
- */
+
 @Service
 @RequiredArgsConstructor
 public class ModeloService {
 
     private final ModeloRepository modeloRepository;
-    private final MarcaService marcaService; // Injeção de outro Service (composição)
+    private final MarcaService marcaService; 
 
     public List<Modelo> listarTodos() {
         return modeloRepository.findAll();
     }
 
     public List<Modelo> listarPorMarca(Long marcaId) {
-        // Valida se a marca existe antes de buscar modelos
         marcaService.buscarPorId(marcaId);
         return modeloRepository.findByMarcaId(marcaId);
     }

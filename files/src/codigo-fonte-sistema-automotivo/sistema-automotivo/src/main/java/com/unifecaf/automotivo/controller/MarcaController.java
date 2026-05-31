@@ -12,16 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Controller REST para o recurso MARCA.
- *
- * Padrão REST aplicado:
- *  GET    /api/marcas        → listar todas
- *  GET    /api/marcas/{id}   → buscar por ID
- *  POST   /api/marcas        → criar nova
- *  PUT    /api/marcas/{id}   → atualizar
- *  DELETE /api/marcas/{id}   → remover
- */
 @RestController
 @RequestMapping("/api/marcas")
 @RequiredArgsConstructor

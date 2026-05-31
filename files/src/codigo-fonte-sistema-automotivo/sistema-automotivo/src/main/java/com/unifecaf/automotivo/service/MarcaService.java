@@ -9,15 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Camada de Serviço para operações de MARCA.
- *
- * POO aplicado — ABSTRAÇÃO:
- *  O Controller não conhece detalhes do banco de dados.
- *  Toda regra de negócio fica aqui, separada da camada de apresentação.
- *
- * @RequiredArgsConstructor (Lombok) injeta automaticamente o repository via construtor.
- */
 @Service
 @RequiredArgsConstructor
 public class MarcaService {
@@ -35,7 +26,6 @@ public class MarcaService {
 
     @Transactional
     public Marca criar(Marca marca) {
-        // Regra de negócio: não permite marca duplicada
         if (marcaRepository.existsByNomeIgnoreCase(marca.getNome())) {
             throw new IllegalArgumentException(
                     "Já existe uma marca com o nome: " + marca.getNome());
@@ -54,7 +44,6 @@ public class MarcaService {
     @Transactional
     public void deletar(Long id) {
         Marca marca = buscarPorId(id);
-        // Regra: não permite deletar marca que possui modelos cadastrados
         if (!marca.getModelos().isEmpty()) {
             throw new IllegalArgumentException(
                     "Não é possível excluir a marca pois ela possui modelos vinculados.");

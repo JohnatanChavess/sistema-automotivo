@@ -5,14 +5,6 @@ import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- * Classe principal da aplicação Spring Boot.
- *
- * @SpringBootApplication combina:
- *  - @Configuration     → classe de configuração Spring
- *  - @EnableAutoConfiguration → configura automaticamente beans (JPA, Web, etc.)
- *  - @ComponentScan     → escaneia @Service, @Repository, @Controller no pacote
- */
 @SpringBootApplication
 @OpenAPIDefinition(
     info = @Info(

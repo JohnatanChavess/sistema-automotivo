@@ -12,17 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Controller REST para o recurso MODELO.
- *
- * Padrão REST aplicado:
- *  GET    /api/modelos               → listar todos
- *  GET    /api/modelos/{id}          → buscar por ID
- *  GET    /api/modelos/marca/{id}    → listar modelos de uma marca
- *  POST   /api/modelos/marca/{id}    → criar modelo para uma marca
- *  PUT    /api/modelos/{id}          → atualizar
- *  DELETE /api/modelos/{id}          → remover
- */
 @RestController
 @RequestMapping("/api/modelos")
 @RequiredArgsConstructor

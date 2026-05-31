@@ -14,13 +14,6 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.List;
 
-/**
- * Camada de Serviço para operações de VEICULO.
- *
- * POO aplicado — ABSTRAÇÃO e ENCAPSULAMENTO:
- *  Toda regra de negócio está centralizada aqui.
- *  Os Controllers apenas delegam chamadas a esta classe.
- */
 @Service
 @RequiredArgsConstructor
 public class VeiculoService {
@@ -39,10 +32,6 @@ public class VeiculoService {
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Veículo", id));
     }
 
-    /**
-     * RF05-RF08: Filtro combinado e dinâmico de veículos.
-     * Qualquer parâmetro pode ser nulo — será ignorado na query.
-     */
     public List<Veiculo> buscarComFiltros(
             String nomeMarca,
             String nomeModelo,
@@ -56,11 +45,6 @@ public class VeiculoService {
                 nomeMarca, nomeModelo, ano, status, precoMin, precoMax);
     }
 
-    // ── Criação ────────────────────────────────────────────────────────
-
-    /**
-     * RF01: Cadastra um novo veículo no estoque.
-     */
     @Transactional
     public Veiculo criar(Long modeloId, Veiculo veiculo) {
         Modelo modelo = modeloService.buscarPorId(modeloId);
@@ -76,12 +60,7 @@ public class VeiculoService {
         return veiculoRepository.save(veiculo);
     }
 
-    // ── Atualização ────────────────────────────────────────────────────
 
-    /**
-     * RF09: Atualiza preço, quilometragem, status e observações.
-     * Não permite alterar modelo ou data de cadastro.
-     */
     @Transactional
     public Veiculo atualizar(Long id, Veiculo dadosAtualizados) {
         Veiculo veiculoExistente = buscarPorId(id);
@@ -113,18 +92,12 @@ public class VeiculoService {
         return veiculoRepository.save(veiculoExistente);
     }
 
-    // ── Remoção ────────────────────────────────────────────────────────
 
-    /**
-     * RF10: Remove o veículo definitivamente do banco de dados.
-     */
     @Transactional
     public void deletar(Long id) {
-        buscarPorId(id); // Garante que existe antes de deletar
+        buscarPorId(id); 
         veiculoRepository.deleteById(id);
     }
-
-    // ── Validações internas (privadas) ─────────────────────────────────
 
     private void validarAnoFabricacao(Integer ano) {
         int anoAtual = Year.now().getValue();
